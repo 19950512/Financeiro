@@ -2,11 +2,11 @@ package System.bank;
 
 public class Pagar implements Transacoes {
 
-    Double valor;
-    String conta;
-    String tipo;
-    Integer data;
-    String descricao;
+    private Double valor;
+    private String conta;
+    private String tipo;
+    private Integer data;
+    private String descricao;
 
     @Override
     public Double pedidoTrans(Double valor) {
