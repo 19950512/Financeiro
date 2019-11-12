@@ -10,3 +10,10 @@ Individual, duplas ou trios.
 *Matheus Potrich*
 
 ### Data de entrega: 19 de nov
+
+
+## USAGE ##
+
+No terminal...
+*cd Financeiro/
+*javac Main.java && java Main
