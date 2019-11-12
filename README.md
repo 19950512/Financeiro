@@ -15,5 +15,6 @@ Individual, duplas ou trios.
 ## USAGE ##
 
 No terminal...
-*cd Financeiro/
-*javac Main.java && java Main
+
+*cd Financeiro/*
+*javac Main.java && java Main*
