@@ -16,5 +16,5 @@ Individual, duplas ou trios.
 
 No terminal...
 
-*cd Financeiro/*
-*javac Main.java && java Main*
+<p>*cd Financeiro/</p>
+<p>*javac Main.java && java Main*</p>
