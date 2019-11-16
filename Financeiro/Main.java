@@ -8,62 +8,103 @@ class Main {
 
 	public static void main(String[] args) {
 
+		String closeBox = "\n--------------------------------------------------------------\n";
+
         Menu menu = new Menu();
 		
         Scanner in = new Scanner(System.in);
 		in.useLocale(Locale.ENGLISH);
-  		
-  		String tela = menu.login();
+
+  		String tela = menu.welcome();
 
   		Financeiro a = new Financeiro();
 
   		while(true){
 
-  			System.out.print("\033[H\033[2J");
-        	System.out.println(tela); 
-  			Double valor = 0d;
-        	String acao = in.nextLine();
+			Double valor = 0d;
 
-        	// CONSULTA
-        	if(acao.equals("1")){
-        		tela = menu.saldo(a.getSaldo());
-        	}
-        	
-        	// DEPOSITAR
-        	if(acao.equals("2")){
+  			//System.out.print("\033[H\033[2J");
+        	System.out.println(tela);
+  			System.out.print("Digite a opcao desejada: ");
+        	int acao = in.nextInt();
 
-	  			System.out.print("\033[H\033[2J");
-	        	System.out.println(menu.depositar()); 
-        		valor = in.nextDouble();
-        		a.Entrada(valor);
-        	}
+        	// verificacao de tipo de conta
 
-        	// EXTRATOS
-        	if(acao.equals("3")){
-        		// a.getMovimentacoes();
-	        	tela = menu.movimentacoes();
-        	}
+			if (acao == 1) {
+				System.out.print("Pessoa fisica\n");
+			}
 
-        	// SACAR
-        	if(acao.equals("4")){
+			else if (acao == 2) {
+				System.out.print("Pessoa fisica\n");
+			}
 
-	  			System.out.print("\033[H\033[2J");
-	        	System.out.println(menu.sacar()); 
-        		valor = in.nextDouble();
-        		a.Saida(valor);
-        	}
+			while(true) {
 
-        	// VOLTAR
-        	if(acao.equals("9")){
-        		tela = menu.principal();
-        	}
+				// Opcoes para usuario ja logado
 
-        	// SAIR
-        	if(acao.equals("0")){
-        		break;
-        	}
+				System.out.println(menu.principal());
+				System.out.print("Digite a opcao desejada: ");
+				int opcao = in.nextInt();
 
+				// CONSULTA
+				if (opcao == 1) {
+					System.out.print(menu.saldo(a.getSaldo()));
+				}
+
+				// DEPOSITAR
+				else if (opcao == 2) {
+					//System.out.print("\033[H\033[2J");
+					System.out.println(menu.depositar());
+					System.out.print("Depositar valor: ");
+					valor = in.nextDouble();
+					System.out.print(closeBox);
+					a.Entrada(valor);
+				}
+
+				// EXTRATOS
+				else if (opcao == 3) {
+					ArrayList<Double> movimentacoes = a.getMovimentacoes();
+					System.out.println(menu.movimentacoes());
+					String tipoMov = "";
+
+					for (Double trans : movimentacoes) {
+						if(trans > 0){
+							tipoMov = " Depositado: ";
+						} else if(trans < 0) {
+							trans = trans * -1;
+							tipoMov = " Retirado: ";
+						} else {
+							tipoMov = " Movimentacao invalida: ";
+						}
+
+						System.out.println(tipoMov + "R$ " + trans);
+					}
+					System.out.print(closeBox);
+				}
+
+				// SACAR
+				else if (opcao == 4) {
+
+					Double valorIn = a.getValor();
+
+					//System.out.print("\033[H\033[2J");
+					System.out.println(menu.sacar());
+					System.out.print(" Sacar valor: ");
+					valor = in.nextDouble();
+					if(valor > valorIn){
+						System.out.println(" Transacao invalida");
+					}
+					System.out.print(closeBox);
+					a.Saida(valor);
+				}
+
+				// SAIR
+				else if (opcao == 0) {
+					break;
+				}
+			}
   		}
+
   		//System.out.println(menu.principal());
 		/*Financeiro a = new Financeiro();
 

@@ -22,11 +22,13 @@ public class Movimentacao {
 	}
 
 	public boolean Saida(Double valor){
-		valor = valor * -1;
+		if(valor <= this.valor) {
+			valor = valor * -1;
 
-		this.saidas.add(valor);
-		this.movimentacoes.add(valor);
-		this.setValor(valor);
+			this.saidas.add(valor);
+			this.movimentacoes.add(valor);
+			this.setValor(valor);
+		}
 		return false;
 	}
 
