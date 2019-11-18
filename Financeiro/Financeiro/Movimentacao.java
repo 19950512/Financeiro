@@ -2,6 +2,8 @@ package Financeiro;
 
 import java.util.*;
 
+import Financeiro.Cliente;
+
 public class Movimentacao {
 
 	private String tipo;
@@ -14,7 +16,10 @@ public class Movimentacao {
 	private ArrayList<Double> entradas = new ArrayList<Double>();
 	private ArrayList<Double> saidas = new ArrayList<Double>();
 
+	Cliente b = new Cliente();
+
 	public boolean Entrada(Double valor){
+		valor = valor - (valor * b.getAdicional());
 		this.entradas.add(valor);
 		this.movimentacoes.add(valor);
 		this.setValor(valor);

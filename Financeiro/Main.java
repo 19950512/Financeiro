@@ -3,6 +3,7 @@ import java.util.*;
 
 import Financeiro.Financeiro;
 import Financeiro.Menu;
+import Financeiro.Cliente;
 
 class Main {
 
@@ -15,28 +16,57 @@ class Main {
         Scanner in = new Scanner(System.in);
 		in.useLocale(Locale.ENGLISH);
 
-  		String tela = menu.welcome();
-
   		Financeiro a = new Financeiro();
+
+  		Cliente b = new Cliente();
+
+  		String cliente = null;
 
   		while(true){
 
 			Double valor = 0d;
 
   			//System.out.print("\033[H\033[2J");
-        	System.out.println(tela);
+        	System.out.println(menu.tipoConta());
   			System.out.print("Digite a opcao desejada: ");
         	int acao = in.nextInt();
 
         	// verificacao de tipo de conta
 
 			if (acao == 1) {
-				System.out.print("Pessoa fisica\n");
+				b.setFisico(true);
 			}
 
 			else if (acao == 2) {
-				System.out.print("Pessoa fisica\n");
+				b.setFisico(false);
 			}
+
+			System.out.println(menu.login());
+			System.out.println(" 1 - ja sou cliente\n 2 - criar conta\n");
+			System.out.print("opcao: ");
+			int opLogar = in.nextInt();
+
+			if(opLogar == 1) {
+				// logar cliente ja cadastrado
+
+				System.out.println(menu.login());
+				System.out.print("Informe seu ID para Logar: ");
+				int indentificacao = in.nextInt();
+				cliente = b.getNomeCliente(indentificacao);
+
+			} else if(opLogar == 2){
+				// cadastrar novo cliente
+
+				System.out.println(menu.login());
+				System.out.print("Informe seu nome: ");
+				String novoNome = in.nextLine();
+				b.novoCliente(novoNome);
+				System.out.println();
+				System.out.println("Bem Vindo " + novoNome);
+				System.out.println("Seu ID: " + b.novoClienteID() + "\n");
+			}
+
+			System.out.println(menu.boasvindas(cliente));
 
 			while(true) {
 
@@ -65,6 +95,8 @@ class Main {
 				else if (opcao == 3) {
 					ArrayList<Double> movimentacoes = a.getMovimentacoes();
 					System.out.println(menu.movimentacoes());
+					System.out.println(" Mostrando Extrato de " + cliente + ":");
+					System.out.println(" Custo de uso: " + (b.getAdicional() * 10) + "%");
 					String tipoMov = "";
 
 					for (Double trans : movimentacoes) {

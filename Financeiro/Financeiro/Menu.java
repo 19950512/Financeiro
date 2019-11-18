@@ -70,7 +70,7 @@ public class Menu {
 		return menu;
 	}
 
-	public static String welcome(){
+	public static String tipoConta(){
 
 		String menu = "";
 		menu += "--------------------------------------------------------------\n";
@@ -87,13 +87,24 @@ public class Menu {
 		return menu;
 	}
 
+	public static String boasvindas(String nomeCliente){
+
+		String menu = "";
+		menu += "--------------------------------------------------------------\n";
+		menu += "|              ..::'  B E M  -  V I N D O  '::..             |\n";
+		menu += "--------------------------------------------------------------\n";
+		menu += "\n";
+		menu += " Bem Vindo " + nomeCliente + "\n";
+
+		return menu;
+	}
+
 	public static String login(){
 
 		String menu = "";
 		menu += "--------------------------------------------------------------\n";
 		menu += "|              ..::'  B E M  -  V I N D O  '::..             |\n";
 		menu += "--------------------------------------------------------------\n";
-		// pedir dados do usuario
 
 		return menu;
 	}
