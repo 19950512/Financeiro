@@ -1,5 +1,7 @@
 
 import java.util.*;
+import java.io.IOException;
+
 
 import Financeiro.Financeiro;
 import Financeiro.Menu;
@@ -26,19 +28,14 @@ class Main {
 
 			Double valor = 0d;
 
-  			//System.out.print("\033[H\033[2J");
         	System.out.println(menu.tipoConta());
   			System.out.print("Digite a opcao desejada: ");
         	int acao = in.nextInt();
 
         	// verificacao de tipo de conta
-
+			b.setFisico(false);
 			if (acao == 1) {
 				b.setFisico(true);
-			}
-
-			else if (acao == 2) {
-				b.setFisico(false);
 			}
 
 			System.out.println(menu.login());
@@ -136,44 +133,5 @@ class Main {
 				}
 			}
   		}
-
-  		//System.out.println(menu.principal());
-		/*Financeiro a = new Financeiro();
-
-		System.out.println("Saldo Atual: ");
-		System.out.println(a.getSaldo());
-
-		System.out.println("Lançar uma Entrada: + 0.75");
-		a.Entrada(0.75);
-
-		System.out.println("Saldo Atual: ");
-		System.out.println(a.getSaldo());
-
-		System.out.println("Lançar uma Despesa: - 4.04");
-		a.Saida(4.04);
-
-		System.out.println("Saldo Atual: ");
-		System.out.println(a.getSaldo());
-
-		System.out.println("Lançar uma Despesa: - 3.18");
-		a.Saida(3.18);
-
-		System.out.println("Saldo Atual: ");
-		System.out.println(a.getSaldo());
-		System.out.println("\n");
-
-
-		System.out.println("Movimentações: ");
-		System.out.println(a.getMovimentacoes());
-
-		System.out.println("Entradas: ");
-		System.out.println(a.getEntradas());
-
-		System.out.println("\n");
-		System.out.println("Saídas: ");
-		System.out.println(a.getSaidas());
-
-		System.out.println("Saldo Atual: ");
-		System.out.println(a.getSaldo());
-*/	}
+  	}
 }
