@@ -24,12 +24,7 @@ public class Cliente {
             90% = 0.9
         */
 
-        if(fisico){
-            adicional = 0.15;
-        } else  {
-            adicional = 0.03;
-        }
-        return adicional;
+        return fisico ? 0.015 : 0.03;
     }
 
     public String getNomeCliente(int target){

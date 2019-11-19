@@ -33,8 +33,6 @@ public class Menu {
 		menu += "\n";
 		menu += " Saldo disponivel: R$ " + saldo + "\n";
 		menu += "\n";
-		menu += " 1 - Continuar\n";
-		menu += "\n";
 		menu += "--------------------------------------------------------------\n";
 
 		return menu;

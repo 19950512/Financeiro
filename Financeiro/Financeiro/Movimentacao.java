@@ -19,6 +19,7 @@ public class Movimentacao {
 	Cliente b = new Cliente();
 
 	public boolean Entrada(Double valor){
+		
 		valor = valor - (valor * b.getAdicional() / 100);
 		this.entradas.add(valor);
 		this.movimentacoes.add(valor);
