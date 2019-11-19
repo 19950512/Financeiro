@@ -11,6 +11,7 @@ class Main {
 
 	public static void main(String[] args) {
 
+		limpaTerminal();
 		String closeBox = "\n--------------------------------------------------------------\n";
 
         Menu menu = new Menu();
@@ -31,6 +32,7 @@ class Main {
         	System.out.println(menu.tipoConta());
   			System.out.print("Digite a opcao desejada: ");
         	int acao = in.nextInt();
+			limpaTerminal();
 
         	// verificacao de tipo de conta
 			b.setFisico(false);
@@ -43,6 +45,7 @@ class Main {
 			System.out.print("opcao: ");
 			int opLogar = in.nextInt();
 
+			limpaTerminal();
 			if(opLogar == 1) {
 				// logar cliente ja cadastrado
 
@@ -62,25 +65,26 @@ class Main {
 				System.out.println("Bem Vindo " + novoNome);
 				System.out.println("Seu ID: " + b.novoClienteID() + "\n");
 			}
-
+			
+			limpaTerminal();
 			System.out.println(menu.boasvindas(cliente));
-
+			
 			while(true) {
 
 				// Opcoes para usuario ja logado
-
 				System.out.println(menu.principal());
 				System.out.print("Digite a opcao desejada: ");
 				int opcao = in.nextInt();
 
 				// CONSULTA
 				if (opcao == 1) {
+					limpaTerminal();
 					System.out.print(menu.saldo(a.getSaldo()));
 				}
 
 				// DEPOSITAR
 				else if (opcao == 2) {
-					//System.out.print("\033[H\033[2J");
+					limpaTerminal();
 					System.out.println(menu.depositar());
 					System.out.print("Depositar valor: ");
 					valor = in.nextDouble();
@@ -90,10 +94,11 @@ class Main {
 
 				// EXTRATOS
 				else if (opcao == 3) {
+					limpaTerminal();
 					ArrayList<Double> movimentacoes = a.getMovimentacoes();
 					System.out.println(menu.movimentacoes());
 					System.out.println(" Mostrando Extrato de " + cliente + ":");
-					System.out.println(" Custo de uso: " + (b.getAdicional() * 10) + "%");
+					System.out.println(" Custo de uso: " + (b.getAdicional() * 100) + "%");
 					String tipoMov = "";
 
 					for (Double trans : movimentacoes) {
@@ -114,9 +119,9 @@ class Main {
 				// SACAR
 				else if (opcao == 4) {
 
+					limpaTerminal();
 					Double valorIn = a.getValor();
-
-					//System.out.print("\033[H\033[2J");
+					
 					System.out.println(menu.sacar());
 					System.out.print(" Sacar valor: ");
 					valor = in.nextDouble();
@@ -129,9 +134,15 @@ class Main {
 
 				// SAIR
 				else if (opcao == 0) {
+					limpaTerminal();
 					break;
 				}
 			}
   		}
   	}
+	
+	public static void limpaTerminal(){
+		System.out.print("\033[H\033[2J");  
+		System.out.flush(); 
+	}
 }
